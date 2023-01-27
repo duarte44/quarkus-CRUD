@@ -1,7 +1,7 @@
 package org.acme.controller;
 
 
-import org.acme.dto.CustomerNewDTO;
+
 import org.acme.entity.Customer;
 import org.acme.entity.Servico;
 import org.acme.service.CustomerService;

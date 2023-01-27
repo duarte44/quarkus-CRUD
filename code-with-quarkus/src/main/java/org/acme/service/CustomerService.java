@@ -30,7 +30,6 @@ public class CustomerService {
 
     public void addCustomer(Customer customer){
         customerRepository.persist(customer);
-        servicoRepository.persist(customer.getServicos());
     }
 
     public Response findById(Long id){

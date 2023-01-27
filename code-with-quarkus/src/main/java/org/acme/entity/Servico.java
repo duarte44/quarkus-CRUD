@@ -26,7 +26,7 @@ public class Servico {
     }
 
     @ManyToOne
-   // @JsonBackReference
+    @JsonBackReference
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
@@ -37,4 +37,5 @@ public class Servico {
         this.quantidade = quantidade;
         this.preco = preco;
     }
+
 }

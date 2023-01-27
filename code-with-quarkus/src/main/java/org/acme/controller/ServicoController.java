@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,8 +34,8 @@ public class ServicoController {
 
     @POST
     @Transactional
-    public void addCustomer(Servico servico){
-        servicoService.addCustomer(servico);
+    @Path("{id}")
+    public void insert(Servico servico, @PathParam("id") Long id){
+        servicoService.insert(servico, id);
     }
-
 }
