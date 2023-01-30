@@ -7,10 +7,9 @@ import org.acme.repository.ServicoRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+
+
+import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
@@ -29,8 +28,10 @@ public class CustomerService {
     }
 
     public void addCustomer(Customer customer){
+
         customerRepository.persist(customer);
     }
+
 
     public Response findById(Long id){
        var respo = customerRepository.findById(id);
@@ -41,6 +42,20 @@ public class CustomerService {
     public Response delete(Long id){
         var respo = customerRepository.deleteById(id);
         return Response.ok(respo).build();
+    }
+
+    public Response update(Long id, Customer newCustomer){
+        Customer customer = customerRepository.findById(id);
+
+        if(customer != null){
+            customer.setName(newCustomer.getName());
+            customer.setLastName(newCustomer.getLastName());
+            customer.setEmail(newCustomer.getEmail());
+            customer.setAge(newCustomer.getAge());
+            return Response.noContent().build();
+        }
+
+        return Response.status(Response.Status.NOT_FOUND).build();
     }
 
 
